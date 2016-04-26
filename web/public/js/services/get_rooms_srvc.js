@@ -1,7 +1,7 @@
 
 app.factory('getRoomsSrvc', function($http) {
     var query = function(rooms, room){
-        $http.get(serverBaseUrl + '/rooms')
+        $http.get(serverBaseUrl + '/api/rooms')
             .then(function(roomsQueryData) {
                 for (i=0; i<roomsQueryData.data.rooms.length; ++i)
                     rooms.push(roomsQueryData.data.rooms[i])

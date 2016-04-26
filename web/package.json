@@ -16,6 +16,7 @@
     "node": "0.12.2"
   },
   "scripts": {
-    "start": "node server.js"
+      "postinstall": "bower install",
+      "start": "node server.js"
   }
 }

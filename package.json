@@ -12,7 +12,8 @@
         "angular-route" : "latest",
         "bower": "latest",
         "http": "latest",
-        "path": "latest"
+        "path": "latest",
+        "request": "latest"
     },
     "engines": {
     "node": "latest"

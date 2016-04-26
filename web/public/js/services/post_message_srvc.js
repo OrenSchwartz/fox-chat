@@ -4,7 +4,7 @@
 app.factory('postMessageSrvc', function($http) {
     var query = function(msg, room, user){
         room = room.toUpperCase();
-        $http.post(serverBaseUrl + '/msg',
+        $http.post(serverBaseUrl + '/api/msg',
                    {"message":msg,"room":room, "username":user},
                    {"Content-Type": "application/json"})
             .then(function(messagesPostRes) {

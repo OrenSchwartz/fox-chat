@@ -1,22 +1,25 @@
 var express = require('../node_modules/express'),
-  path = require('../node_modules/path'),
-  cookieParser = require('../node_modules/cookie-parser'),
-  bodyParser = require('../node_modules/body-parser');
-  ejs = require('../node_modules/ejs');
+    path = require('../node_modules/path'),
+    cookieParser = require('../node_modules/cookie-parser'),
+    bodyParser = require('../node_modules/body-parser');
+    requestProxy = require('../node_modules/request'),
+    ejs = require('../node_modules/ejs');
 var app = express();
 
 // generate connection string based on env tag.
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var server_address = 'localhost'
+
 if (env == 'development') {
     var port = 4000;
     var server_port = 3030;
-    var server_address = 'localhost';
 }
 else {
     var port = process.env.PORT;
     var server_port = process.env.SERVER_PORT;
-    var server_address = 'localhost';
 }
+var web_server_address = server_address + ":" + port;
+var bl_server_address = server_address +  ":" + server_port;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,8 +35,12 @@ app.get('/partials/:partialPath',
         function(req,res){
             res.render('partials/'+req.params.partialPath);
         });
-app.get('/bl_server_address', function(req, res){
-    res.send({"bl_server_address":"http://" + server_address+":"+server_port});
+
+app.all('/api/*',
+    function(req,res,next){
+        var url = "http://" + bl_server_address + req.url.substring(4) ;
+        console.info("routing " + web_server_address + req.url + " to " +url );
+        req.pipe(requestProxy(url)).pipe(res);
 });
 
 app.get('*', function(req, res){
@@ -45,8 +52,8 @@ app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(port, function() {
 	// log a message to console!
-    console.error('Web application server listening on port ' + port +
-                  ' querying the bl server on ' + server_port +' ...');
+    console.error('Web application server listening on ' + web_server_address +
+                  ' querying the bl server on ' + bl_server_address +' ...');
 });
 
 module.exports = app;
