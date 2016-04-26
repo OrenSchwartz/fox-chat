@@ -15,7 +15,7 @@
         "path": "latest"
     },
     "engines": {
-    "node": "4.3.3"
+    "node": "latest"
   },
   "scripts": {
       "start_server": "node server server.js",
