@@ -13,13 +13,15 @@ var server_address = 'localhost'
 if (env == 'development') {
     var port = 4000;
     var server_port = 3030;
+    var bl_server_address = server_address +  ":" + server_port;
+
 }
 else {
     var port = process.env.PORT;
     var server_port = process.env.SERVER_PORT;
+    var bl_server_address = process.env.SERVER_ADDRESS;
 }
 var web_server_address = server_address + ":" + port;
-var bl_server_address = server_address +  ":" + server_port;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
