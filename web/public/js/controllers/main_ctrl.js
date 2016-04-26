@@ -1,4 +1,4 @@
-app.controller('mainCtrl', function ($scope, $mdDialog, $http, getRoomsSrvc, getMessagesSrvc, postMessageSrvc, $timeout,$mdMedia) {
+app.controller('mainCtrl', function ($scope, $mdDialog, $http, getRoomsSrvc, getMessagesSrvc, postMessageSrvc, setBLServerAddress, $timeout,$mdMedia) {
     $scope.roomMessagesDict = {};
     $scope.room = "";
     $scope.username = "";
@@ -7,16 +7,18 @@ app.controller('mainCtrl', function ($scope, $mdDialog, $http, getRoomsSrvc, get
     $scope.initPage = function (ev) {
         //Launch Modal
         showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia);
+
+        setBLServerAddress.
+            then(function(){getRoomsSrvc($scope.rooms,$scope.room);});
+
     };
-    
+
     $scope.send = function (msg) {
         postMessageSrvc(msg, $scope.room, $scope.username);
 
         // clear message text after it was posted to the server
         document.getElementsByClassName('message_text')[0].value = '';
     };
-
-    getRoomsSrvc($scope.rooms,$scope.room);
 
     // Get room messages periodically
     var lastHeight = 0;
@@ -32,5 +34,3 @@ app.controller('mainCtrl', function ($scope, $mdDialog, $http, getRoomsSrvc, get
         $timeout(tick, 100);
     })();
 });
-
-

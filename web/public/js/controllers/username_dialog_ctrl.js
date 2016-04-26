@@ -17,7 +17,7 @@ function showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia) {
     if ($scope.username == null || $scope.username == '') {
         $mdDialog.show({
                 controller: userNameDialogCtrl,
-                templateUrl: 'partials/userNameDialogView.html',
+                templateUrl: 'partials/username_dialog_view.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 fullscreen: useFullScreen,

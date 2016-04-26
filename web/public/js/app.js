@@ -1,5 +1,7 @@
 'use strict';
 var app = angular.module('fox-chat', ['ngMaterial', 'ngAnimate', 'ngMdIcons', 'ngResource','ngRoute']);
+var serverBaseUrl = '';
+var webServerBaseUrl = "http://" + window.location.hostname + ":"+ window.location.port;
 
 // set routing to angular partials
 app.controller('themeController', function themeController ($scope) {});
@@ -10,19 +12,10 @@ app.config(function($routeProvider,$locationProvider, $mdThemingProvider)
         // ng-view routing
         $routeProvider.
             when('/',
-                {templateUrl:'/partials/main', controller:'mainCtrl'})
+                {templateUrl:'/partials/main_view', controller:'mainCtrl'});
 
         // use theme
         $mdThemingProvider.theme('customTheme')
-            .primaryPalette('orange')
+            .primaryPalette('orange');
     }
 );
-
-// connect to server on port
-if (env == 'development') {
-    var port = 4000;
-}
-else {
-    var port = process.env.PORT;
-}
-var serverBaseUrl = 'http://localhost:'+port;

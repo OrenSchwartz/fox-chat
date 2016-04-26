@@ -4,7 +4,20 @@ var express = require('../node_modules/express'),
   bodyParser = require('../node_modules/body-parser');
   ejs = require('../node_modules/ejs');
 var app = express();
-  
+
+// generate connection string based on env tag.
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+if (env == 'development') {
+    var port = 4000;
+    var server_port = 3030;
+    var server_address = 'localhost';
+}
+else {
+    var port = process.env.PORT;
+    var server_port = process.env.SERVER_PORT;
+    var server_address = 'localhost';
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -19,26 +32,21 @@ app.get('/partials/:partialPath',
         function(req,res){
             res.render('partials/'+req.params.partialPath);
         });
-app.get('*', function(req, res){
-  res.render('index')
+app.get('/bl_server_address', function(req, res){
+    res.send({"bl_server_address":"http://" + server_address+":"+server_port});
 });
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+app.get('*', function(req, res){
+  res.render('index');
+});
 
 //Set our static file directory to public
 app.use(express.static(__dirname + '/public'));
 
-// generate connection string based on env tag.
-if (env == 'development') {
-    var port = 4000;
-}
-else {
-    var port = process.env.PORT;
-}
-app.set('port', port);
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(port, function() {
 	// log a message to console!
-    console.error('Port at ' + app.get('port'));
+    console.error('Web application server listening on port ' + port +
+                  ' querying the bl server on ' + server_port +' ...');
 });
 
 module.exports = app;

@@ -56,4 +56,4 @@ messagesEP.createMessageListener(app);
 roomsEP.getRoomsListener(app);
 
 server.listen(port);
-console.log('listening on port ' + port + '...');
+console.log('BL server listening on port ' + port + '...');
