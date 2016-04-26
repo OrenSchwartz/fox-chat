@@ -22,7 +22,7 @@ if (env == 'development') {
 }
 else {
     var connection_string = 'mongodb://oren:a@ds013981.mlab.com:13981/fox-chat';
-    var port = process.env.SERVER_PORT;
+    var port = process.env.PORT;
 }
 
 //Connect to mongo DB database

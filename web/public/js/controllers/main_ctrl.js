@@ -9,7 +9,6 @@ app.controller('mainCtrl', function ($scope, $mdDialog, $http, getRoomsSrvc, get
         showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia);
 
         getRoomsSrvc($scope.rooms,$scope.room);
-
     };
 
     $scope.send = function (msg) {
