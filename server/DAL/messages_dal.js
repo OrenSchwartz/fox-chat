@@ -1,13 +1,10 @@
-"use strict";
-class messagesDAL{
-    constructor() {
-    }
+'use strict';
 
-  
-  retrieve(room){
+function messagesDAL(){
+  this.retrieve = function(room){
     return new Promise(function(resolve, reject) {
-        var messages = require('../models/messagesModel');
-        
+        var messages = require('../models/messages_model');
+
         messages.find({
                     'room': room
                     })
@@ -19,11 +16,11 @@ class messagesDAL{
                     return resolve(msgs);
                 });
         });
-    }
+    };
     
-    create(message){
+    this.create = function(message){
         return new Promise(function(resolve, reject) {
-            var MessagesModel = require('../models/messagesModel');
+            var MessagesModel = require('../models/messages_model');
             
             //Create message
             var newMsg = new MessagesModel({
@@ -44,7 +41,7 @@ class messagesDAL{
                 }
             });
         });
-    }
+    };
 }
 
-module.exports = new messagesDAL()
+module.exports = new messagesDAL();

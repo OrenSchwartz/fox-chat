@@ -29,8 +29,8 @@ else {
 mongoose.connect(connection_string);
 
 // Create messages DAL and endpoint objects
-messagesEP = require('./endpoints/messagesEP');
-roomsEP = require('./endpoints/roomsEP');
+messagesEP = require('./endpoints/messages_ep');
+roomsEP = require('./endpoints/rooms_ep');
 
 //Allow CORS
 app.all('/*', function(req, res, next) {

@@ -1,12 +1,9 @@
 "use strict";
 var RESOURCE = '/msg';
-var DAL_OBJ_REF = '../DAL/messagesDAL';
+var DAL_OBJ_REF = '../DAL/messages_dal';
 
-class messagesEP{
-    constructor() {
-    }
-    
-    getMsgsByRoomListener(app){
+function messagesEP(){
+    this.getMsgsByRoomListener = function(app){
         //This route produces a list of chat as filterd by 'room' query
         app.get(RESOURCE, function(req, res) {
             var messagesDAL = require(DAL_OBJ_REF)
@@ -19,9 +16,9 @@ class messagesEP{
                     res.status(500);
                 })
         })
-    }
+    };
     
-    createMessageListener(app){
+    this.createMessageListener = function(app){
         app.post(RESOURCE, function(req, res) {
         
             var messagesDAL = require(DAL_OBJ_REF);
@@ -36,7 +33,7 @@ class messagesEP{
                     res.status(500);
                 });
         })
-    }
+    };
 }
 
-module.exports = new messagesEP()
+module.exports = new messagesEP();
