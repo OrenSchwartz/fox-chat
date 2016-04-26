@@ -19,7 +19,10 @@ if (env == 'development') {
 else {
     var port = process.env.PORT;
     var server_port = process.env.SERVER_PORT;
-    var bl_server_address = process.env.SERVER_ADDRESS + ':' + server_port;
+    if (server_port)
+        var bl_server_address = process.env.SERVER_ADDRESS + ':' + server_port;
+    else
+        var bl_server_address = process.env.SERVER_ADDRESS
 }
 var web_server_address = server_address + ":" + port;
 
