@@ -1,10 +1,10 @@
 //Import all our dependencies
-var express = require('express');
-var mongoose = require('mongoose');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('../express');
+var mongoose = require('../mongoose');
+var cookieParser = require('../cookie-parser');
+var bodyParser = require('../body-parser');
 var app = express();
-var server = require('http').Server(app);
+var server = require('../http').Server(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,7 +29,6 @@ else {
 mongoose.connect(connection_string);
 
 // Create messages DAL and endpoint objects
-// messagesDAL = require('./DAL/messagesDAL');
 messagesEP = require('./endpoints/messagesEP');
 roomsEP = require('./endpoints/roomsEP');
 
