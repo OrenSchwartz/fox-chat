@@ -1,1 +1,1 @@
-$COMPONENT: node $COMPONENT server.js
+$DYNO_TYPE: node $COMPONENT server.js
