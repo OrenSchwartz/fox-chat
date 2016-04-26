@@ -18,6 +18,7 @@
     "node": "latest"
   },
   "scripts": {
+      "postinstall": "bower install",
       "start_server": "node server server.js",
       "start_web": "node web server.js"
   }

@@ -1,7 +1,7 @@
 {
   "name": "fox-chat-web",
   "description": "a chat client",
-  "main": "web\index.js",
+  "main": "web/index.js",
   "authors": [
     "Oren Schwartz"
   ],
