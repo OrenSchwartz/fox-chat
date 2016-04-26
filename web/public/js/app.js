@@ -19,4 +19,10 @@ app.config(function($routeProvider,$locationProvider, $mdThemingProvider)
 );
 
 // connect to server on port
-var serverBaseUrl = 'http://localhost:3030';
+if (env == 'development') {
+    var port = 4000;
+}
+else {
+    var port = process.env.PORT;
+}
+var serverBaseUrl = 'http://localhost:'+port;
