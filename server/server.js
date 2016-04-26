@@ -1,10 +1,10 @@
 //Import all our dependencies
-var express = require('../express');
-var mongoose = require('../mongoose');
-var cookieParser = require('../cookie-parser');
-var bodyParser = require('../body-parser');
+var express = require('../node_modules/express');
+var mongoose = require('../node_modules/mongoose');
+var cookieParser = require('../node_modules/cookie-parser');
+var bodyParser = require('../node_modules/body-parser');
 var app = express();
-var server = require('../http').Server(app);
+var server = require('http').Server(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

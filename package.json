@@ -10,13 +10,15 @@
         "ejs":"latest",
         "angular-resource":"latest",
         "angular-route" : "latest",
-        "bower": "latest"
+        "bower": "latest",
+        "http": "latest",
+        "path": "latest"
     },
     "engines": {
     "node": "0.12.2"
   },
   "scripts": {
-      "start_server": "node server/server.js",
-      "start_web": "node web/server.js"
+      "start_server": "node server server.js",
+      "start_web": "node web server.js"
   }
 }
