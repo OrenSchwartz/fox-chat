@@ -33,7 +33,7 @@ if (env == 'development') {
     var port = 4000;
 }
 else {
-    var port = process.env.WEB_PORT;
+    var port = process.env.PORT;
 }
 app.set('port', port);
 var server = app.listen(app.get('port'), function() {
