@@ -1,0 +1,42 @@
+"use strict";
+var RESOURCE = '/msg';
+var DAL_OBJ_REF = '../DAL/messagesDAL';
+
+class messagesEP{
+    constructor() {
+    }
+    
+    getMsgsByRoomListener(app){
+        //This route produces a list of chat as filterd by 'room' query
+        app.get(RESOURCE, function(req, res) {
+            var messagesDAL = require(DAL_OBJ_REF)
+            //Find
+            messagesDAL
+                .retrieve(req.query.room.toLowerCase())
+                .then(function(msgs){res.json(msgs);})
+                .catch(function(err){
+                    console.error("could not retieve messages from db: " + err);
+                    res.status(500);
+                })
+        })
+    }
+    
+    createMessageListener(app){
+        app.post(RESOURCE, function(req, res) {
+        
+            var messagesDAL = require(DAL_OBJ_REF);
+            messagesDAL
+                .create(req.body)
+                .then(function(msg){
+                    res.json({"created":true, "message": "message createed", "content":msg});
+                    res.status(201);
+                })
+                .catch(function(err){
+                    console.error("could not create messages from db: " + err);
+                    res.status(500);
+                });
+        })
+    }
+}
+
+module.exports = new messagesEP()

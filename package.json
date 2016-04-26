@@ -1,0 +1,21 @@
+{
+    "name": "fox-chat-web",
+    "main": "server.js",
+    "dependencies": {
+        "mongoose": "latest",
+        "morgan": "latest",
+        "express" : "latest",
+        "cookie-parser" : "latest",
+        "body-parser" : "latest",
+        "ejs":"latest",
+        "angular-resource":"latest",
+        "angular-route" : "latest",
+        "bower": "latest"
+    },
+    "engines": {
+    "node": "0.12.2"
+  },
+  "scripts": {
+      "start": "node web\server.js"
+  }
+}

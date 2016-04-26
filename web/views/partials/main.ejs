@@ -1,0 +1,7 @@
+<div md-theme="customTheme" id="themeContainer" ng-controller="themeController as ctrl" ng-cloak>
+    <single-page layout="column" ng-init="initPage()" ng-enter="mockFunction()" style="height: 100vh">
+        <% include toolbarView.ejs %>
+        <% include messagesContainerView.ejs %>
+        <% include sendMessageFooterView.ejs %>
+    </single-page>
+</div>

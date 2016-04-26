@@ -1,0 +1,54 @@
+h1, h1 span{
+    font-size: 50px !important;
+    font-family: 'Amatic SC', cursive;
+    font-style: italic;
+    font-weight: bold;
+}
+
+h2, h2 span{
+    font-size: 30px !important;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+}
+
+.md-subheader .md-subheader-content{
+    font-size: 25px !important;
+    font-family: 'Amatic SC', cursive;
+}
+
+/* fix list items*/
+md-list.md-customTheme-theme md-list-item.md-2-line .md-list-item-text h3,
+md-list.md-customTheme-theme md-list-item.md-2-line .md-list-item-text h4,
+md-list.md-customTheme-theme md-list-item.md-3-line .md-list-item-text h3,
+md-list.md-customTheme-theme md-list-item.md-3-line .md-list-item-text h4{
+    font-family: 'Amatic SC', cursive;
+    font-size: x-large;
+    font-weight: bold;
+}
+/* fix buttons */
+md-toolbar.md-customTheme-theme,md-dialog .md-actions .md-button, md-dialog md-dialog-actions .md-button:not(.md-menu-toolbar) {
+    background-color: rgba(255, 109, 0, 0.66) !important;
+    color: rgba(0,0,0,0.87) !important;;
+}
+
+/* fix select element */
+md-select{
+    font-size: 30px !important;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+}
+
+md-select.md-customTheme-theme .md-select-value.md-select-placeholder,
+md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder{
+    color: #000000;
+}
+
+#header-text{
+    margin-left: 15px;
+}
+
+#header-img {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+}

@@ -1,0 +1,19 @@
+<md-dialog aria-label="Mango">
+    <md-toolbar class="md-customTheme-theme">
+        <div class="md-toolbar-tools">
+            <h2>Login</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-input-container>
+            <label>Username</label>
+            <input ng-model="username" type="text" autofocus required md-maxlength="30" ng-enter="answer(username)">
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-customTheme-theme" ng-click="answer(username)" class="md-raised md-primary" ng-disabled="!username" >
+            Ok
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
