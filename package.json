@@ -16,6 +16,7 @@
     "node": "0.12.2"
   },
   "scripts": {
-      "start": "node web\server.js"
+      "start_server": "node server/server.js",
+      "start_web": "node web/server.js"
   }
 }
