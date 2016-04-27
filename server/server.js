@@ -21,7 +21,7 @@ if (env == 'development') {
     var port = 3030;
 }
 else {
-    var connection_string = 'mongodb://oren:a@ds013981.mlab.com:13981/fox-chat';
+    var connection_string = 'mongodb://oren:a@ds013981.mlab.com:13981/multi_vision_db';
     var port = process.env.PORT;
 }
 
