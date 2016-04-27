@@ -1,1 +1,1 @@
-$COMPONENT: node $COMPONENT server.js
+web: node $COMPONENT server.js
