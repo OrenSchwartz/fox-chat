@@ -11,18 +11,18 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var server_address = 'localhost'
 
 if (env == 'development') {
-    var port = 4000;
+    var port = 4040;
     var server_port = 3030;
-    var bl_server_address = server_address +  ":" + server_port;
+    var bl_server_address = "http://" + server_address +  ":" + server_port;
 
 }
 else {
     var port = process.env.PORT;
     var server_port = process.env.SERVER_PORT;
     if (server_port)
-        var bl_server_address = process.env.SERVER_ADDRESS + ':' + server_port;
+        var bl_server_address = "http://" + process.env.SERVER_ADDRESS + ':' + server_port;
     else
-        var bl_server_address = process.env.SERVER_ADDRESS
+        var bl_server_address = "http://" +  process.env.SERVER_ADDRESS;
 }
 var web_server_address = server_address + ":" + port;
 
@@ -41,11 +41,8 @@ app.get('/partials/:partialPath',
             res.render('partials/'+req.params.partialPath);
         });
 
-app.all('/api/*',
-    function(req,res,next){
-        var url = "http://" + bl_server_address + req.url.substring(4) ;
-        console.info("routing " + web_server_address + req.url + " to " +url );
-        req.pipe(requestProxy(url)).pipe(res);
+app.get('/bl_server_address', function(req,res){
+    res.send({'bl_server_address': bl_server_address})
 });
 
 app.get('*', function(req, res){

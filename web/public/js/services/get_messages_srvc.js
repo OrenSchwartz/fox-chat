@@ -1,9 +1,8 @@
-
 app.factory('getMessagesSrvc', function($http) {
     var messages = null;
     var query = function(room,roomMessagesDict){
         room = room.toUpperCase();
-        $http.get(serverBaseUrl + '/api/msg?room=' + room)
+        $http.get(serverBaseUrl + '/msg?room=' + room)
             .then(function(messagesQueryRes) {
                 importRoomMessages(room, roomMessagesDict, messagesQueryRes);
             }

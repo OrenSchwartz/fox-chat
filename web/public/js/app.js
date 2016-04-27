@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('fox-chat', ['ngMaterial', 'ngAnimate', 'ngMdIcons', 'ngResource','ngRoute']);
-var serverBaseUrl = "http://" + window.location.hostname + ":"+ window.location.port;
-
+var webServerBaseUrl = "http://" + window.location.hostname + ":"+ window.location.port;
+var serverBaseUrl = '';
 // set routing to angular partials
 app.controller('themeController', function themeController ($scope) {});
 app.config(function($routeProvider,$locationProvider, $mdThemingProvider)

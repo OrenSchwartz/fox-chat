@@ -6,7 +6,7 @@ function messagesEP(){
     this.getMsgsByRoomListener = function(app){
         //This route produces a list of chat as filterd by 'room' query
         app.get(RESOURCE, function(req, res) {
-            var messagesDAL = require(DAL_OBJ_REF)
+            var messagesDAL = require(DAL_OBJ_REF);
             //Find
             messagesDAL
                 .retrieve(req.query.room.toLowerCase())
