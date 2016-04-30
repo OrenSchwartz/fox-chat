@@ -1,7 +1,9 @@
-<md-list-item class="md-2-line" style="width:96%">
-    <img ng-src="img/avatar{{m.username.length % 5}}.png" class="md-avatar" alt="User"/>
+<md-list-item class="md-2-line" style="width:96%" init="{{is_mine = (token != m.cookie);}}">
+    <img ng-if="is_mine" style="float:left;" ng-src="img/avatar{{m.username.length % 5}}.png" class="md-avatar" alt="User"/>
     <div class="md-list-item-text">
-        <h3 style="float:{{(token != m.cookie) ? 'left' : 'right'}};">{{m.username}}</h3>
-        <p  style="float:{{(token != m.cookie) ? 'left' : 'right'}}; clear: both;">{{m.content}}</p>
+        <h3 style="float:{{(is_mine) ? 'left' : 'right'}};">{{m.username}}</h3>
+        <p  style="float:{{(is_mine) ? 'left' : 'right'}}; clear: both;">{{m.content}}</p>
     </div>
+    <img ng-if="(!(is_mine))" style="float:right; margin-left: 16px" ng-src="img/avatar{{m.username.length % 5}}.png" class="md-avatar" alt="User"/>
+
 </md-list-item>
