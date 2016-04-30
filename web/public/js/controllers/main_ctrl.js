@@ -1,26 +1,29 @@
 app.controller('mainCtrl', function ($scope, $mdDialog, $cookieStore,
                                     getRoomsSrvc, getMessagesSrvc, postMessageSrvc,
                                     setBLServerAddressSrvc, authenticateUserSrvc, $timeout,$mdMedia) {
-        $scope.roomMessagesDict = {};
+    $scope.roomMessagesDict = {};
     $scope.room = "";
     $scope.username = "";
     $scope.rooms = [];
 
     $scope.initPage = function (ev) {
-        //Launch Modal
-        showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia, $cookieStore, authenticateUserSrvc);
-
-        setBLServerAddressSrvc.
-            then(
-            function(){getRoomsSrvc($scope.rooms,$scope.room);}
+        setBLServerAddressSrvc
+        .then(
+            function(){
+                //Launch Modal
+                showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia, $cookieStore, authenticateUserSrvc);
+            }
             ,function (err){console.error("could not fetch bl server address from server");}
             ,function (err){console.error("time out on fetch bl server address from server");}
-        );
-
+        )
+        .then(function() {
+                getRoomsSrvc($scope.rooms, $scope.room);
+            }
+        )
     };
 
     $scope.send = function (msg) {
-        postMessageSrvc(msg, $scope.room, $scope.username);
+        postMessageSrvc(msg, $scope.room, $scope.profile);
 
         // clear message text after it was posted to the server
         document.getElementsByClassName('message_text')[0].value = '';
@@ -29,10 +32,12 @@ app.controller('mainCtrl', function ($scope, $mdDialog, $cookieStore,
     // Get room messages periodically
     var lastHeight = 0;
     (function tick() {
-        if (typeof $scope.username === 'undefined' || $scope.username == '')
+        if (serverBaseUrl == '' || typeof $scope.username === 'undefined' || $scope.username == '') {
+            $timeout(tick, 100);
             return;
+        }
 
-        getMessagesSrvc($scope.room,$scope.roomMessagesDict);
+        getMessagesSrvc($scope.room,$scope.roomMessagesDict).then();
 
         // scroll down the list view, once it is updated.
         var objDiv = document.getElementsByClassName('scrollable_content')[0];

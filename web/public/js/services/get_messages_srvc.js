@@ -7,14 +7,25 @@ app.factory('getMessagesSrvc', function($http) {
                 importRoomMessages(room, roomMessagesDict, messagesQueryRes);
             }
             ,function (err){
-                console.error("could not fetch messages from server: " + err.message);
+                console.error("could not fetch messages from server: " + err.data);
+                throw err;
             }
-            ,function (err){console.error("time out on fetch messages from server: "+ err.message);}
-            );      
+            ,function (err){
+                            console.error("time out on fetch messages from server: "+ err.data);
+                            throw err;
+            });
     };
     
     return function(room,roomMessagesDict){
-        return query(room,roomMessagesDict);
+        return new Promise(function (resolve,reject){
+                try {
+                    query(room, roomMessagesDict);
+                    resolve();
+                }
+                catch (e){
+                    reject(e);
+                }
+        });
     } 
 });
 

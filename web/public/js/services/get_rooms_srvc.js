@@ -8,10 +8,10 @@ app.factory('getRoomsSrvc', function($http) {
                 room = roomsQueryData.data.defaultRoom;
             }
             ,function (err){
-                console.error("could not fetch rooms from server: " + err.message);
+                console.error("could not fetch rooms from server: " + err.data);
                 throw err;
             }
-            ,function (err){console.error("time out on fetch rooms from server: " + err.message);}
+            ,function (err){console.error("time out on fetch rooms from server: " + err.data);}
             );      
     };
     

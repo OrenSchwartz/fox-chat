@@ -4,7 +4,6 @@ function messagesDAL(){
   this.retrieve = function(room){
     return new Promise(function(resolve, reject) {
         var messages = require('../models/messages_model');
-
         messages.find({
                     'room': room
                     })
@@ -18,15 +17,16 @@ function messagesDAL(){
         });
     };
     
-    this.create = function(message){
+    this.create = function(body){
         return new Promise(function(resolve, reject) {
             var MessagesModel = require('../models/messages_model');
-            
+            var profile = body.profile;
             //Create message
             var newMsg = new MessagesModel({
-                username: message.username,
-                content: message.message,
-                room: message.room.toLowerCase(),
+                username: profile.username,
+                content: body.message,
+                room: body.room.toLowerCase(),
+                cookie: profile.cookie,
                 created: new Date()
             });
             //Save it to database

@@ -6,8 +6,8 @@ app.factory('setBLServerAddressSrvc', function($http) {
                 console.info("angular found out that the bl server is " + serverBaseUrl);
                 resolve();
             }
-            ,function (err){console.error("could not fetch bl server address: "+ err.message); reject();}
-            ,function (err){console.error("time out on fetch bl server address: "+ err.message);reject();}
+            ,function (err){console.error("could not fetch bl server address: "+ err.data); reject();}
+            ,function (err){console.error("time out on fetch bl server address: "+ err.data);reject();}
         );
     });
 });

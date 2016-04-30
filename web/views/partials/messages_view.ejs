@@ -1,9 +1,6 @@
-<md-whiteframe ng-repeat="m in roomMessagesDict[room]" class="md-whiteframe-z2 message" layout layout-align="center center">
-    <md-list-item class="md-2-line">
-        <img ng-src="img/avatar{{m.username.length % 5}}.png" class="md-avatar" alt="User" />
-        <div class="md-list-item-text">
-            <h3>{{ m.username }}</h3>
-            <p>{{m.content}}</p>
-        </div>
-    </md-list-item>
+<md-whiteframe ng-repeat="m in roomMessagesDict[room]" class="md-whiteframe-z2" layout="column"
+               layout-align="center start">
+    <% include message_view.ejs %>
 </md-whiteframe>
+
+<!--"{{token == m.cookie ? 'end' : 'start'}}" XXX="{{token +',' + m.cookie}}"-->

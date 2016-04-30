@@ -6,6 +6,7 @@ var MessageModel = mongoose.Schema({
   created: Date,
   content: String,
   username: String,
+  cookie: String,
   room: String
 });
 

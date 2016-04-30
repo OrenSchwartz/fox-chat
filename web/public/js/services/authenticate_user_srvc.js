@@ -4,15 +4,14 @@ app.factory('authenticateUserSrvc', function($http, $cookieStore) {
             $http.post(webServerBaseUrl + '/authenticate', profile)
                 .success(function (data, status, headers, config) {
                     console.info("authenticated user " + profile);
-                    $cookieStore.token = data.token;
-                    $cookieStore.profile = profile;
+                    profile['cookie'] = data.token;
+                    $cookieStore.put('profile', profile);
                     resolve(profile);
                 })
                 .error(function (data, status, headers, config) {
                     console.error("could not authenticate user: " +data);
                     try {
-                        delete $cookieStore.profile;
-                        delete $cookieStore.token ;
+                        delete $cookieStore.profile['cookie'];
                     }
                     catch (e){}
                     reject;

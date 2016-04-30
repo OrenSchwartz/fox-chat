@@ -1,0 +1,7 @@
+<md-list-item class="md-2-line" style="width:96%">
+    <img ng-src="img/avatar{{m.username.length % 5}}.png" class="md-avatar" alt="User"/>
+    <div class="md-list-item-text">
+        <h3 style="float:{{(token != m.cookie) ? 'left' : 'right'}};">{{m.username}}</h3>
+        <p  style="float:{{(token != m.cookie) ? 'left' : 'right'}}; clear: both;">{{m.content}}</p>
+    </div>
+</md-list-item>
