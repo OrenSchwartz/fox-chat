@@ -6,10 +6,14 @@ function messagesEP(){
     this.getMsgsByRoomListener = function(app){
         //This route produces a list of chat as filterd by 'room' query
         app.get(RESOURCE, function(req, res) {
+            var room = req.query.room;
+            if (typeof room === 'undefined' || room == '')
+                room = 'general';
+
             var messagesDAL = require(DAL_OBJ_REF);
             //Find
             messagesDAL
-                .retrieve(req.query.room.toLowerCase())
+                .retrieve(room.toLowerCase())
                 .then(function(msgs){res.json(msgs);})
                 .catch(function(err){
                     console.error("could not retieve messages from db: " + err);

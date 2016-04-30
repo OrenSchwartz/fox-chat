@@ -7,8 +7,11 @@ app.factory('getRoomsSrvc', function($http) {
                     rooms.push(roomsQueryData.data.rooms[i])
                 room = roomsQueryData.data.defaultRoom;
             }
-            ,function (err){console.error("could not fetch rooms from server");}
-            ,function (err){console.error("time out on fetch rooms from server");}
+            ,function (err){
+                console.error("could not fetch rooms from server: " + err.message);
+                throw err;
+            }
+            ,function (err){console.error("time out on fetch rooms from server: " + err.message);}
             );      
     };
     

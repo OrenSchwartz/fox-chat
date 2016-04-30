@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('fox-chat', ['ngMaterial', 'ngAnimate', 'ngMdIcons', 'ngResource','ngRoute']);
+var app = angular.module('fox-chat', ['ngMaterial', 'ngAnimate', 'ngCookies', 'ngMdIcons', 'ngResource','ngRoute']);
 var webServerBaseUrl = "http://" + window.location.hostname + ":"+ window.location.port;
 var serverBaseUrl = '';
 // set routing to angular partials

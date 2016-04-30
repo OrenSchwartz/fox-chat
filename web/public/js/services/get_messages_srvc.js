@@ -6,8 +6,10 @@ app.factory('getMessagesSrvc', function($http) {
             .then(function(messagesQueryRes) {
                 importRoomMessages(room, roomMessagesDict, messagesQueryRes);
             }
-            ,function (err){console.error("could not fetch messages from server");}
-            ,function (err){console.error("time out on fetch messages from server");}
+            ,function (err){
+                console.error("could not fetch messages from server: " + err.message);
+            }
+            ,function (err){console.error("time out on fetch messages from server: "+ err.message);}
             );      
     };
     

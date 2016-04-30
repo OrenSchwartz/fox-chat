@@ -1,5 +1,5 @@
 // This is the modal listener
-function userNameDialogCtrl($scope, $mdDialog) {
+function userNameDialogCtrl($scope, $mdDialog, $http, $cookieStore, authenticateUserSrvc) {
     $scope.hide = function () {
         $mdDialog.hide();
     };
@@ -7,14 +7,20 @@ function userNameDialogCtrl($scope, $mdDialog) {
         $mdDialog.cancel();
     };
     $scope.answer = function (answer) {
-        $mdDialog.hide(answer);
+        authenticateUserSrvc({'username' : answer}).then(
+             function(){$mdDialog.hide(answer);}
+            ,function (err){console.error("could not authenticate user " + answer );}
+            ,function (err){console.error("could not authenticate user " + answer + " on time");}
+        );
     };
 }
 
 // Responsible for creating and handling the modal results
-function showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia) {
+function showUserNameModal(ev, $scope, $mdDialog, getMessagesSrvc, $mdMedia, $cookieStore, authenticateUserSrvc) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
-    if ($scope.username == null || $scope.username == '') {
+    sessionUsername = $cookieStore.username ? $cookieStore : null;
+    username = $scope.username || sessionUsername;
+    if (username == null || username == '') {
         $mdDialog.show({
                 controller: userNameDialogCtrl,
                 templateUrl: 'partials/username_dialog_view.html',

@@ -13,7 +13,9 @@
         "bower": "latest",
         "http": "latest",
         "path": "latest",
-        "request": "latest"
+        "request": "latest",
+        "express-jwt": "latest",
+        "jsonwebtoken": "latest"
     },
     "engines": {
     "node": "latest"

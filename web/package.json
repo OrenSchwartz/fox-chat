@@ -10,7 +10,9 @@
         "ejs":"latest",
         "angular-resource":"latest",
         "angular-route" : "latest",
-        "bower": "latest"
+        "bower": "latest",
+        "express-jwt": "latest",
+        "jsonwebtoken": "latest"
     },
     "engines": {
     "node": "0.12.2"

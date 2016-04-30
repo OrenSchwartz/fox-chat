@@ -10,8 +10,8 @@ app.factory('postMessageSrvc', function($http) {
             .then(function(messagesPostRes) {
                 console.info('message created');
             }
-            ,function (err){console.error("could not fetch messages from server");}
-            ,function (err){console.error("time out on fetch messages from server");}
+            ,function (err){console.error("could not post a message on server:" + err);}
+            ,function (err){console.error("time out on post a message on server:" + err);}
         );
     };
 
