@@ -57,7 +57,7 @@ app.post('/authenticate', function (req, res) {
     };
 
     // We are sending the profile inside the token
-    var token = jwt.sign(profile, secretJson.secret);
+    var token = jwt.sign(profile, secretJson.secret );
 
     res.json({ token: token });
 });
